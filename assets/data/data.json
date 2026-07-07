@@ -1,0 +1,112 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "category": "mawlid",
+      "name": "علبة المولد الملكية",
+      "description": "تشكيلة فاخرة من حلويات المولد النبوي الشريف",
+      "price": 850,
+      "currency": "ج.م",
+      "image": "https://images.unsplash.com/photo-1558636508-ea2e9b9e4c12?w=600&q=80",
+      "badge": "الأكثر مبيعاً",
+      "inStock": true,
+      "weight": "500g"
+    },
+    {
+      "id": 2,
+      "category": "mawlid",
+      "name": "صندوق المولد الفاخر",
+      "description": "مزيج من ألذ حلويات المولد التقليدية مع لمسة عصرية",
+      "price": 650,
+      "currency": "ج.م",
+      "image": "https://images.unsplash.com/photo-1488477181946-6428a0291777?w=600&q=80",
+      "badge": "إصدار محدود",
+      "inStock": true,
+      "weight": "350g"
+    },
+    {
+      "id": 3,
+      "category": "mawlid",
+      "name": "حلوى المولد المشكلة",
+      "description": "تشكيلة متنوعة من الحلويات الشرقية الأصيلة",
+      "price": 550,
+      "currency": "ج.م",
+      "image": "https://images.unsplash.com/photo-1587668178277-295251f900ce?w=600&q=80",
+      "badge": "",
+      "inStock": true,
+      "weight": "400g"
+    },
+    {
+      "id": 4,
+      "category": "mawlid",
+      "name": "سلة المولد الذهبية",
+      "description": "سلة فاخرة تضم تشكيلة مميزة من حلويات المولد",
+      "price": 1200,
+      "currency": "ج.م",
+      "image": "https://images.unsplash.com/photo-1464349095431-e9a21215b546?w=600&q=80",
+      "badge": "هدية مثالية",
+      "inStock": true,
+      "weight": "750g"
+    },
+    {
+      "id": 5,
+      "category": "mawlid",
+      "name": "بوكس المولد الصغير",
+      "description": "هدية مثالية للأصدقاء والعائلة",
+      "price": 300,
+      "currency": "ج.م",
+      "image": "https://images.unsplash.com/photo-1531292461545-53a3827c3e84?w=600&q=80",
+      "badge": "جديد",
+      "inStock": true,
+      "weight": "200g"
+    },
+    {
+      "id": 6,
+      "category": "mawlid",
+      "name": "مشكل المولد الفاخر",
+      "description": "تشكيلة مميزة من أجود أنواع حلويات المولد",
+      "price": 950,
+      "currency": "ج.م",
+      "image": "https://images.unsplash.com/photo-1517433670267-2a05c3b2df8f?w=600&q=80",
+      "badge": "",
+      "inStock": true,
+      "weight": "600g"
+    },
+    {
+      "id": 7,
+      "category": "mawlid",
+      "name": "هدية المولد الملكية",
+      "description": "هدية فاخرة لمناسبات المولد النبوي",
+      "price": 1500,
+      "currency": "ج.م",
+      "image": "https://images.unsplash.com/photo-1558636508-ea2e9b9e4c12?w=600&q=80",
+      "badge": "الأكثر مبيعاً",
+      "inStock": true,
+      "weight": "1kg"
+    },
+    {
+      "id": 8,
+      "category": "mawlid",
+      "name": "سلة حلويات المولد",
+      "description": "سلة أنيقة تحتوي على تشكيلة من الحلويات الشرقية",
+      "price": 780,
+      "currency": "ج.م",
+      "image": "https://images.unsplash.com/photo-1488477181946-6428a0291777?w=600&q=80",
+      "badge": "هدية مثالية",
+      "inStock": true,
+      "weight": "450g"
+    },
+    {
+      "id": 9,
+      "category": "mawlid",
+      "name": "بوكس المولد الذهبي",
+      "description": "بوكس فاخر يحتوي على أجود أنواع حلويات المولد",
+      "price": 1100,
+      "currency": "ج.م",
+      "image": "https://images.unsplash.com/photo-1587668178277-295251f900ce?w=600&q=80",
+      "badge": "إصدار محدود",
+      "inStock": true,
+      "weight": "700g"
+    }
+  ]
+}
