@@ -17,14 +17,17 @@
           theme: {
             extend: {
               colors: {
-                primary: "#FF7373",
+                primary: "#ED5C85",
                 secondary: "#2E2024",
                 accent: "#3A2830",
                 gold: { DEFAULT: "#C77B87", light: "#F0C4CB", dark: "#A8636F" },
                 rose: { DEFAULT: "#F5AEB8", dark: "#E2818F", light: "#FBDEE3" },
                 cream: "#FFFBFA",
                 background: "#FFF7FA",
-                surface: "#FFFFFF"
+                surface: "#FFFFFF",
+                ivory: "#FFF9F5",
+                pearl: "#F4EDEC",
+                graystone: "#8B7B7E"
               },
               fontFamily: {
                 cairo: ["Cairo", "sans-serif"],
@@ -117,12 +120,9 @@
             Despacito
         </a>
 
-        <div class="hidden md:flex theme-switcher" role="tablist" aria-label="اختيار المجموعة الموسمية">
-            <button type="button" class="theme-pill active" data-season="mawlid" role="tab" aria-selected="true">مجموعة المولد</button>
-            <button type="button" class="theme-pill" data-season="ramadan" role="tab" aria-selected="false">مجموعة رمضان</button>
-            <button type="button" class="theme-pill" data-season="eid" role="tab" aria-selected="false">مجموعة العيد</button>
-        </div>
 
+
+  
         <div class="flex items-center gap-4 md:gap-6">
             <button onclick="window.openCart()" aria-label="Open Shopping Cart" class="relative group flex items-center justify-center w-12 h-12 rounded-full border border-primary/10 hover:border-seasonal-rose bg-white shadow-luxury-sm hover:shadow-luxury-md transition-all duration-500 magnetic-element">
                 <i class="fas fa-shopping-bag text-primary group-hover:text-seasonal-rose transition-colors text-lg"></i>
@@ -144,7 +144,7 @@
 <main>
     <!-- ==================== HERO ==================== -->
     <header id="hero" class="relative w-full min-h-[100dvh] flex items-center justify-center overflow-hidden  py-32">
-        <div class="absolute inset-0 z-0 gs-parallax scale-110 ">
+        <div class="absolute inset-0 z-0 gs-parallax scale-110 opacity-80 ">
             <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=2072&auto=format&fit=crop"
                  alt="Luxury Bakery Background"
                  class="w-full h-full object-cover"
@@ -211,6 +211,11 @@
                 <div class="absolute top-0 left-0 w-full h-1/2 bg-gold animate-bounce"></div>
             </div>
         </div>
+
+        <!-- Signature cream-wave organic transition into the next section -->
+        <svg class="wave-divider absolute -bottom-px left-0 w-full h-auto text-cream pointer-events-none" viewBox="0 0 1440 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path class="wave-divider-path" fill="currentColor" d="M0,64 C 220,110 420,10 720,48 C 1020,86 1220,20 1440,56 L1440,120 L0,120 Z"></path>
+        </svg>
     </header>
 
     <!-- ==================== ABOUT BRAND ==================== -->
@@ -241,30 +246,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-span-1 lg:col-span-7 order-1 lg:order-2 text-scroller-fade">
-                    <div class="flex items-center gap-3 mb-4 justify-center lg:justify-start">
-                        <span class="w-8 h-[1px] bg-gold"></span>
-                        <span class="text-seasonal-gold text-xs font-bold tracking-widest uppercase">حكايتنا الملكية</span>
-                    </div>
-                    <h3 class="font-dmserif text-4xl md:text-6xl text-primary leading-tight mb-8 text-center lg:text-right">من مطبخ العائلة<br>إلى موائد الفخامة</h3>
-                    <p class="text-primary/60 text-base md:text-lg mb-8 max-w-2xl leading-relaxed text-center lg:text-right mx-auto lg:mx-0">
-                        وُلدت ديسپاسيتو من شغف عائلي عريق بصناعة الحلويات الشرقية، لتتحول اليوم إلى دار فاخرة تجمع بين وصفات الجدات الأصيلة ولمسات الحرفية الفرنسية الدقيقة. كل قطعة تُصنع يدوياً بأناة، وتُغلَّف بعناية تليق باسمها.
-                    </p>
-                    <div class="grid grid-cols-3 gap-6 border-t border-primary/5 pt-8 max-w-xl mx-auto lg:mx-0 text-center lg:text-right">
-                        <div>
-                            <span class="block text-2xl font-bold font-playfair text-seasonal-gold counter-element" data-target="40">0</span>
-                            <span class="text-[11px] text-primary/40 uppercase tracking-wider">وصفة حصرية</span>
-                        </div>
-                        <div>
-                            <span class="block text-2xl font-bold font-playfair text-seasonal-gold counter-element" data-target="12">0</span>
-                            <span class="text-[11px] text-primary/40 uppercase tracking-wider">حرفي متخصص</span>
-                        </div>
-                        <div>
-                            <span class="block text-2xl font-bold font-playfair text-seasonal-gold counter-element" data-target="9">0</span>
-                            <span class="text-[11px] text-primary/40 uppercase tracking-wider">تشكيلات ملكية</span>
-                        </div>
-                    </div>
-                </div>
+         
             </div>
         </div>
     </section>
@@ -617,7 +599,7 @@
 
 </main>
 
-<footer class="bg-primary text-white w-full py-24 px-6 md:px-12 lg:px-20 relative overflow-hidden border-t border-white/5">
+<footer class="bg-secondary text-white w-full py-24 px-6 md:px-12 lg:px-20 relative overflow-hidden border-t border-white/5">
     <div class="grid grid-cols-1 md:grid-cols-12 gap-16 max-w-[1600px] mx-auto mb-16 relative z-10">
         <div class="col-span-1 md:col-span-5">
             <h2 class="font-playfair text-4xl text-white tracking-[0.2em] uppercase font-bold mb-8">Despacito</h2>
