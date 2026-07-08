@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html dir="rtl" lang="ar" class="scroll-smooth">
+<html dir="rtl" lang="ar" class="scroll-smooth" data-theme="mawlid">
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0" name="viewport" />
     <meta name="description" content="ديسپاسيتو باتيسري - أرقى مستويات الفخامة في عالم الحلويات المصرية العصرية" />
     <title>Despacito | Luxury Patisserie</title>
-
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Serif+Display&display=swap" rel="stylesheet" />
@@ -17,13 +17,13 @@
           theme: {
             extend: {
               colors: {
-                primary: "#0A0A0A",
-                secondary: "#141414",
-                accent: "#1F1F1F",
-                gold: { DEFAULT: "#C5A059", light: "#E2C792", dark: "#9A7633" },
-                rose: { DEFAULT: "#D4A0A0", dark: "#B37D7D", light: "#F2D6D6" },
-                cream: "#FDFBF7",
-                background: "#F9F6F0",
+                primary: "#FF7373",
+                secondary: "#2E2024",
+                accent: "#3A2830",
+                gold: { DEFAULT: "#C77B87", light: "#F0C4CB", dark: "#A8636F" },
+                rose: { DEFAULT: "#F5AEB8", dark: "#E2818F", light: "#FBDEE3" },
+                cream: "#FFFBFA",
+                background: "#FFF7FA",
                 surface: "#FFFFFF"
               },
               fontFamily: {
@@ -32,10 +32,10 @@
                 dmserif: ["DM Serif Display", "serif"]
               },
               boxShadow: {
-                'luxury-sm': '0 4px 20px rgba(0, 0, 0, 0.02)',
-                'luxury-md': '0 20px 40px -10px rgba(10, 10, 10, 0.05)',
-                'luxury-lg': '0 30px 60px -15px rgba(212, 160, 160, 0.15)',
-                'glass': '0 8px 32px 0 rgba(10, 10, 10, 0.04)'
+                'luxury-sm': '0 4px 20px rgba(61, 43, 51, 0.03)',
+                'luxury-md': '0 20px 40px -10px rgba(61, 43, 51, 0.06)',
+                'luxury-lg': '0 30px 60px -15px rgba(226, 129, 143, 0.18)',
+                'glass': '0 8px 32px 0 rgba(61, 43, 51, 0.05)'
               },
               transitionTimingFunction: {
                 'out-expo': 'cubic-bezier(0.16, 1, 0.3, 1)',
@@ -50,59 +50,158 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.29/bundled/lenis.min.js"></script>
 </head>
-<body class="font-cairo bg-background text-primary overflow-x-hidden antialiased selection:bg-rose selection:text-white">
+<body class="font-cairo seasonal-bg text-primary overflow-x-hidden antialiased selection:bg-rose selection:text-white">
 
 <canvas id="rippleCanvas" class="fixed inset-0 pointer-events-none z-[999]"></canvas>
 
-<div id="loader" class="fixed inset-0 z-[999] bg-primary flex flex-col items-center justify-center">
-    <div class="overflow-hidden mb-6">
-        <h1 class="font-playfair text-5xl md:text-6xl text-white tracking-[0.4em] uppercase opacity-0 translate-y-full preloader-title">Despacito</h1>
+<!-- ==================== AMBIENT ATMOSPHERE LAYERS ==================== -->
+<div class="ambient-layer" aria-hidden="true">
+    <div id="mouseGlow" class="mouse-glow"></div>
+    <div id="starsLayer" class="absolute inset-0"></div>
+    <div id="sparkleLayer" class="absolute inset-0"></div>
+</div>
+
+<div id="loader" class="fixed inset-0 z-[999] flex flex-col items-center justify-center" style="background-color: var(--primary);">
+    <!-- Logo Container -->
+    <div class="relative flex flex-col items-center justify-center overflow-hidden">
+
+        <!-- Logo -->
+        <div class="overflow-hidden">
+            <img 
+                src="./assets/images/logo-Photoroom.png" 
+                alt="Despacito Logo"
+                class="w-32 h-32 md:w-40 md:h-40 object-contain opacity-0 scale-75 preloader-logo"
+            >
+        </div>
+
+        <!-- Brand Name -->
+        <div class="overflow-hidden mt-6">
+            <h1 class="
+                font-playfair 
+                text-4xl md:text-6xl 
+                text-white 
+                tracking-[0.35em] 
+                uppercase 
+                opacity-0 
+                translate-y-full 
+                preloader-title
+                text-center
+            ">
+                Despacito
+            </h1>
+        </div>
+
     </div>
-    <div class="w-40 h-[2px] bg-white/10 relative overflow-hidden rounded-full">
-        <div class="absolute top-0 right-0 h-full bg-gold w-full origin-right scale-x-0 preloader-bar"></div>
+
+
+    <!-- Loading Bar -->
+    <div class="mt-10 w-48 h-[3px] bg-white/20 relative overflow-hidden rounded-full">
+        <div class="
+            absolute 
+            top-0 
+            left-0 
+            h-full 
+            bg-gold 
+            w-full 
+            origin-left 
+            scale-x-0 
+            preloader-bar
+        "></div>
     </div>
+
 </div>
 
 <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-500 glass-nav py-6 border-b border-transparent">
-    <div class="flex justify-between items-center w-full px-6 md:px-12 lg:px-20 max-w-[1920px] mx-auto">
-        <a href="#" class="font-playfair text-2xl md:text-3xl text-primary tracking-[0.2em] uppercase font-bold transition-colors hover:text-gold magnetic-element" aria-label="Despacito Home">
+    <div class="flex justify-between items-center w-full px-6 md:px-12 lg:px-20 max-w-[1920px] mx-auto gap-4">
+        <a href="#" class="font-playfair text-2xl md:text-3xl text-primary tracking-[0.2em] uppercase font-bold transition-colors hover:text-seasonal-gold magnetic-element flex-shrink-0" aria-label="Despacito Home">
             Despacito
         </a>
 
-
+        <div class="hidden md:flex theme-switcher" role="tablist" aria-label="اختيار المجموعة الموسمية">
+            <button type="button" class="theme-pill active" data-season="mawlid" role="tab" aria-selected="true">مجموعة المولد</button>
+            <button type="button" class="theme-pill" data-season="ramadan" role="tab" aria-selected="false">مجموعة رمضان</button>
+            <button type="button" class="theme-pill" data-season="eid" role="tab" aria-selected="false">مجموعة العيد</button>
+        </div>
 
         <div class="flex items-center gap-4 md:gap-6">
-
-
-            <button onclick="window.openCart()" aria-label="Open Shopping Cart" class="relative group flex items-center justify-center w-12 h-12 rounded-full border border-primary/10 hover:border-rose bg-white shadow-luxury-sm hover:shadow-luxury-md transition-all duration-500 magnetic-element">
-                <i class="fas fa-shopping-bag text-primary group-hover:text-rose transition-colors text-lg"></i>
+            <button onclick="window.openCart()" aria-label="Open Shopping Cart" class="relative group flex items-center justify-center w-12 h-12 rounded-full border border-primary/10 hover:border-seasonal-rose bg-white shadow-luxury-sm hover:shadow-luxury-md transition-all duration-500 magnetic-element">
+                <i class="fas fa-shopping-bag text-primary group-hover:text-seasonal-rose transition-colors text-lg"></i>
                 <span id="cartCount" class="absolute -top-1 -right-1 bg-primary text-white text-[10px] w-5 h-5 rounded-full flex items-center justify-center font-bold shadow-md transition-all duration-300">0</span>
             </button>
+        </div>
+    </div>
+
+    <!-- Mobile seasonal switcher -->
+    <div class="md:hidden flex justify-center mt-4 px-6">
+        <div class="theme-switcher w-full justify-center overflow-x-auto" role="tablist" aria-label="اختيار المجموعة الموسمية">
+            <button type="button" class="theme-pill active" data-season="mawlid" role="tab" aria-selected="true">المولد</button>
+            <button type="button" class="theme-pill" data-season="ramadan" role="tab" aria-selected="false">رمضان</button>
+            <button type="button" class="theme-pill" data-season="eid" role="tab" aria-selected="false">العيد</button>
         </div>
     </div>
 </nav>
 
 <main>
-    <header class="relative w-full h-[100dvh] flex items-center justify-center overflow-hidden bg-primary">
-        <div class="absolute inset-0 z-0 gs-parallax scale-110 opacity-60">
+    <!-- ==================== HERO ==================== -->
+    <header id="hero" class="relative w-full min-h-[100dvh] flex items-center justify-center overflow-hidden  py-32">
+        <div class="absolute inset-0 z-0 gs-parallax scale-110 ">
             <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=2072&auto=format&fit=crop"
                  alt="Luxury Bakery Background"
                  class="w-full h-full object-cover"
                  fetchpriority="high">
-            <div class="absolute inset-0 bg-gradient-to-b  via-primary/50 to-primary"></div>
         </div>
 
-        <div class="relative z-10 w-full max-w-[1400px] px-6 text-center text-reveal-container">
-            <span class="hero-reveal block text-gold tracking-[0.5em] text-xs md:text-sm font-bold uppercase mb-6 opacity-0">الرفاهية في كل تفصيلة</span>
-            <h2 class="hero-reveal font-dmserif text-4xl md:text-7xl lg:text-8xl xl:text-9xl text-white leading-tight mb-8 opacity-0">
-                فخامة الحلويات <br><span class="font-cairo font-light text-white/70 text-3xl md:text-6xl">بروح عصرية مبتكرة</span>
-            </h2>
-            <div class="hero-reveal opacity-0 mt-4">
-                <button onclick="document.getElementById('products-section').scrollIntoView({behavior: 'smooth'})"
-                        class="group relative px-10 py-5 bg-white rounded-full overflow-hidden shadow-luxury-md hover:shadow-luxury-lg transition-all duration-500 magnetic-element">
-                    <div class="absolute inset-0 w-0 bg-gold transition-all duration-500 ease-out-expo group-hover:w-full z-0"></div>
-                    <span class="relative z-10 text-primary group-hover:text-white font-bold tracking-widest text-xs md:text-sm uppercase transition-colors duration-500">استكشف </span>
-                </button>
+        <!-- Botanical corner ornament -->
+        <svg class="botanical-corner absolute top-24 left-6 md:left-16 w-24 md:w-36 h-auto text-gold pointer-events-none" viewBox="0 0 120 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M10 150 C 10 100, 40 90, 35 40 C 32 15, 55 5, 70 10" stroke="currentColor" stroke-width="1"/>
+            <ellipse cx="38" cy="60" rx="6" ry="14" transform="rotate(30 38 60)" stroke="currentColor" stroke-width="1"/>
+            <ellipse cx="52" cy="35" rx="5" ry="12" transform="rotate(-10 52 35)" stroke="currentColor" stroke-width="1"/>
+        </svg>
+
+        <div class="relative z-10 w-full max-w-[1500px] px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+
+            <!-- Editorial headline -->
+            <div class="lg:col-span-7 text-center lg:text-right text-reveal-container order-2 lg:order-1">
+                <span id="heroEyebrow" class="hero-reveal block text-gold tracking-[0.5em] text-xs md:text-sm font-bold uppercase mb-6 opacity-0">الرفاهية في كل تفصيلة</span>
+                <h2 class="hero-reveal font-dmserif text-4xl md:text-7xl lg:text-8xl text-white leading-tight mb-8 opacity-0">
+                    <span id="heroTitle">فخامة الحلويات</span><br>
+                    <span id="heroSubtitle" class="font-cairo font-light text-white/70 text-3xl md:text-5xl">بروح عصرية مبتكرة</span>
+                </h2>
+                <div class="hero-reveal opacity-0 mt-4 flex justify-center lg:justify-start">
+                    <button onclick="document.getElementById('products-section').scrollIntoView({behavior: 'smooth'})"
+                            class="shine-btn group relative px-10 py-5 bg-white rounded-full overflow-hidden shadow-luxury-md hover:shadow-luxury-lg transition-all duration-500 magnetic-element">
+                        <div class="absolute inset-0 w-0 bg-gold transition-all duration-500 ease-out-expo group-hover:w-full z-0"></div>
+                        <span class="relative z-10 text-primary group-hover:text-white font-bold tracking-widest text-xs md:text-sm uppercase transition-colors duration-500">استكشف المجموعة</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Circular draw-on-scroll ornament framing the floating product stack -->
+            <div class="lg:col-span-5 relative flex items-center justify-center order-1 lg:order-2 h-[380px] md:h-[460px]">
+                <svg viewBox="0 0 400 400" class="absolute inset-0 w-full h-full" aria-hidden="true">
+                    <circle class="ornament-stroke" cx="200" cy="200" r="150"/>
+                    <circle class="ornament-dotted" cx="200" cy="200" r="172"/>
+                    <path class="float-slow" d="M330 90 a14 14 0 1 0 0.1 0" fill="var(--gold-light)" opacity="0.85"/>
+                    <g class="float-slower" transform="translate(300,60)" opacity="0.9">
+                        <path d="M0 -10 L2.5 -2.5 L10 0 L2.5 2.5 L0 10 L-2.5 2.5 L-10 0 L-2.5 -2.5 Z" fill="var(--gold-light)"/>
+                    </g>
+                    <g class="float-slow" transform="translate(70,320)" opacity="0.7">
+                        <path d="M0 -7 L1.8 -1.8 L7 0 L1.8 1.8 L0 7 L-1.8 1.8 L-7 0 L-1.8 -1.8 Z" fill="var(--rose-light)"/>
+                    </g>
+                </svg>
+
+                <div class="relative float-slow max-w-xs w-full">
+                    <div class="absolute -inset-6 bg-gold/15 blur-3xl rounded-full opacity-60"></div>
+                    <div class="aspect-square rounded-full overflow-hidden bg-accent shadow-2xl relative border border-white/10">
+                        <img
+                                class="w-full h-full object-cover"
+                                src="https://cdn.shopify.com/s/files/1/0609/7050/0316/files/images_1.jpg?v=1756849619"
+                                alt="مجموعة المولد الفاخرة"
+                                loading="eager"
+                                decoding="async"
+                                fetchpriority="high">
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -114,6 +213,63 @@
         </div>
     </header>
 
+    <!-- ==================== ABOUT BRAND ==================== -->
+    <section id="about-section" class="seasonal-surface py-32 relative overflow-hidden">
+        <svg class="botanical-corner absolute top-16 right-6 md:right-16 w-20 md:w-28 h-auto text-rose pointer-events-none" viewBox="0 0 120 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M10 150 C 10 100, 40 90, 35 40 C 32 15, 55 5, 70 10" stroke="currentColor" stroke-width="1"/>
+            <ellipse cx="38" cy="60" rx="6" ry="14" transform="rotate(30 38 60)" stroke="currentColor" stroke-width="1"/>
+        </svg>
+        <div class="max-w-[1600px] mx-auto px-6 md:px-12 lg:px-20">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+                <div class="col-span-1 lg:col-span-5 flex justify-center order-2 lg:order-1 img-reveal-wrapper">
+                    <div class="relative max-w-md w-full">
+                        <div class="absolute -inset-6 bg-rose/10 blur-3xl rounded-full opacity-50"></div>
+                        <div class="aspect-[4/5] rounded-[3rem] overflow-hidden shadow-luxury-lg relative border border-primary/5">
+                            <img class="w-full h-full object-cover lazy-load"
+                                 src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3C/svg%3E"
+                                 data-src="https://images.unsplash.com/photo-1587668178277-295251f900ce?w=900&q=80"
+                                 alt="حرفية صناعة الحلويات الملكية">
+                        </div>
+                        <div class="glass-card float-slow absolute -bottom-8 -right-6 md:-right-10 rounded-[2rem] px-6 py-5 flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-full bg-seasonal-gold/15 flex items-center justify-center text-seasonal-gold flex-shrink-0">
+                                <i class="fas fa-award text-lg"></i>
+                            </div>
+                            <div class="text-right">
+                                <span class="block text-lg font-bold font-dmserif text-primary">+15 عاماً</span>
+                                <span class="text-[11px] text-primary/50 uppercase tracking-wider">من الحرفية الأصيلة</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-span-1 lg:col-span-7 order-1 lg:order-2 text-scroller-fade">
+                    <div class="flex items-center gap-3 mb-4 justify-center lg:justify-start">
+                        <span class="w-8 h-[1px] bg-gold"></span>
+                        <span class="text-seasonal-gold text-xs font-bold tracking-widest uppercase">حكايتنا الملكية</span>
+                    </div>
+                    <h3 class="font-dmserif text-4xl md:text-6xl text-primary leading-tight mb-8 text-center lg:text-right">من مطبخ العائلة<br>إلى موائد الفخامة</h3>
+                    <p class="text-primary/60 text-base md:text-lg mb-8 max-w-2xl leading-relaxed text-center lg:text-right mx-auto lg:mx-0">
+                        وُلدت ديسپاسيتو من شغف عائلي عريق بصناعة الحلويات الشرقية، لتتحول اليوم إلى دار فاخرة تجمع بين وصفات الجدات الأصيلة ولمسات الحرفية الفرنسية الدقيقة. كل قطعة تُصنع يدوياً بأناة، وتُغلَّف بعناية تليق باسمها.
+                    </p>
+                    <div class="grid grid-cols-3 gap-6 border-t border-primary/5 pt-8 max-w-xl mx-auto lg:mx-0 text-center lg:text-right">
+                        <div>
+                            <span class="block text-2xl font-bold font-playfair text-seasonal-gold counter-element" data-target="40">0</span>
+                            <span class="text-[11px] text-primary/40 uppercase tracking-wider">وصفة حصرية</span>
+                        </div>
+                        <div>
+                            <span class="block text-2xl font-bold font-playfair text-seasonal-gold counter-element" data-target="12">0</span>
+                            <span class="text-[11px] text-primary/40 uppercase tracking-wider">حرفي متخصص</span>
+                        </div>
+                        <div>
+                            <span class="block text-2xl font-bold font-playfair text-seasonal-gold counter-element" data-target="9">0</span>
+                            <span class="text-[11px] text-primary/40 uppercase tracking-wider">تشكيلات ملكية</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== EDITORIAL STORYTELLING ==================== -->
     <section class="bg-secondary py-32 relative overflow-hidden border-b border-white/5">
         <div class="absolute top-0 right-0 w-1/2 h-full opacity-10 pointer-events-none">
             <div class="w-full h-full bg-cover" style="background-image: url('https://images.unsplash.com/photo-1578985545062-69928b1d9587?q=80&w=1989&auto=format&fit=crop')"></div>
@@ -127,7 +283,7 @@
                         <span class="text-gold text-xs font-bold tracking-widest uppercase">إصدار محدود وحصري</span>
                     </div>
                     <h3 class="font-playfair text-4xl md:text-6xl text-white font-bold leading-tight mb-6">مجموعة المولد الفاخرة</h3>
-                    <p class="text-white/60 text-base md:text-lg mb-10 max-w-xl font-light leading-relaxed">
+                    <p id="storyText" class="text-white/60 text-base md:text-lg mb-10 max-w-xl font-light leading-relaxed">
                         نحتفل بذكرى المولد النبوي الشريف عبر تقديم تشكيلة ملكية حصرية تجمع عراقة التقاليد المصرية وسحر الابتكار الفرنسي. صناديق مخملية مصممة خصيصاً لتكون الهدية الأرقى لمن تحب.
                     </p>
                     <div class="flex flex-wrap gap-8 border-t border-white/10 pt-8">
@@ -144,53 +300,140 @@
                 <div class="col-span-1 lg:col-span-6 flex justify-center img-reveal-wrapper">
                     <div class="relative group max-w-lg w-full">
                         <div class="absolute -inset-4 bg-gold/10 blur-3xl rounded-full opacity-40 group-hover:opacity-60 transition-opacity duration-700"></div>
-                        <<div class="aspect-square rounded-3xl overflow-hidden bg-accent shadow-2xl relative border border-white/10">
-                        <img
-                                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                                src="https://cdn.shopify.com/s/files/1/0609/7050/0316/files/images_1.jpg?v=1756849619"
-                                alt="مجموعة المولد الفاخرة"
-                                loading="lazy"
-                                decoding="async"
-                                fetchpriority="high">
-                    </div>
+                        <div class="aspect-square rounded-3xl overflow-hidden bg-accent shadow-2xl relative border border-white/10">
+                            <img
+                                    class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                                    src="https://cdn.shopify.com/s/files/1/0609/7050/0316/files/images_1.jpg?v=1756849619"
+                                    alt="مجموعة المولد الفاخرة"
+                                    loading="lazy"
+                                    decoding="async">
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="products-section" class="bg-background py-32 relative overflow-hidden">
+    <!-- ==================== PRODUCTS ==================== -->
+    <section id="products-section" class="seasonal-bg py-32 relative overflow-hidden">
         <div class="max-w-[1600px] mx-auto px-6 md:px-12 lg:px-20 relative z-10">
 
             <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-6">
-                <div>
+                <div class="text-scroller-fade">
                     <div class="flex items-center gap-3 mb-3">
                         <div class="w-10 h-[1px] bg-rose"></div>
-                        <span class="text-rose font-bold text-xs tracking-widest uppercase">القائمة الفاخرة</span>
+                        <span class="text-seasonal-rose font-bold text-xs tracking-widest uppercase">القائمة الفاخرة</span>
                     </div>
                     <h3 class="font-dmserif text-4xl md:text-6xl text-primary">المجموعة الملكية</h3>
                 </div>
 
-                <button onclick="filterCategory('all')" class="category-btn active px-6 py-3 rounded-full text-xs font-bold tracking-wider uppercase border border-primary/5 transition-all duration-300">الكل</button>
-                <button onclick="filterCategory('mawlid')" class="category-btn px-6 py-3 rounded-full text-xs font-bold tracking-wider uppercase border border-primary/5 transition-all duration-300">حلويات المولد</button>
-                <button onclick="filterCategory('luxury')" class="category-btn px-6 py-3 rounded-full text-xs font-bold tracking-wider uppercase border border-primary/5 transition-all duration-300">علب ملكية</button>
+                <div class="flex flex-wrap gap-3">
+                    <button data-category="all" onclick="filterCategory('all', this)" class="category-btn active px-6 py-3 rounded-full text-xs font-bold tracking-wider uppercase border border-primary/5 transition-all duration-300">الكل</button>
+                    <button data-category="mawlid" onclick="filterCategory('mawlid', this)" class="category-btn px-6 py-3 rounded-full text-xs font-bold tracking-wider uppercase border border-primary/5 transition-all duration-300">حلويات المولد</button>
+                    <button data-category="luxury" onclick="filterCategory('luxury', this)" class="category-btn px-6 py-3 rounded-full text-xs font-bold tracking-wider uppercase border border-primary/5 transition-all duration-300">علب ملكية</button>
+                </div>
             </div>
         </div>
 
-        <div id="mawlidProductsContainer" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10 min-h-[500px]">
+        <div id="mawlidProductsContainer" class="max-w-[1600px] mx-auto px-6 md:px-12 lg:px-20 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10 min-h-[500px]">
         </div>
 
         <div id="paginationContainer" class="flex justify-center mt-20 gap-3"></div>
+    </section>
+
+    <!-- ==================== LUXURY PACKAGING ==================== -->
+    <section id="packaging-section" class="bg-secondary py-32 relative overflow-hidden border-b border-white/5">
+        <div class="max-w-[1600px] mx-auto px-6 md:px-12 lg:px-20">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+                <div class="col-span-1 lg:col-span-6 text-white text-scroller-fade">
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="w-8 h-[1px] bg-gold"></span>
+                        <span class="text-gold text-xs font-bold tracking-widest uppercase">فن التغليف الفاخر</span>
+                    </div>
+                    <h3 class="font-playfair text-4xl md:text-6xl text-white font-bold leading-tight mb-6">صناديق تروي قصة الهدية</h3>
+                    <p class="text-white/60 text-base md:text-lg mb-10 max-w-xl font-light leading-relaxed">
+                        نصمم كل صندوق كقطعة فنية قائمة بذاتها؛ مخمل ناعم، طباعة ذهبية دقيقة، وأشرطة حريرية مختارة بعناية. لأن تجربة فتح الهدية يجب أن تكون بجمال ما بداخلها تماماً.
+                    </p>
+                    <ul class="space-y-4">
+                        <li class="flex items-center gap-4 text-white/70 text-sm">
+                            <span class="w-9 h-9 rounded-full bg-gold/10 text-gold flex items-center justify-center flex-shrink-0"><i class="fas fa-gem text-xs"></i></span>
+                            هيكل صندوق صلب مكسو بالمخمل الفاخر
+                        </li>
+                        <li class="flex items-center gap-4 text-white/70 text-sm">
+                            <span class="w-9 h-9 rounded-full bg-gold/10 text-gold flex items-center justify-center flex-shrink-0"><i class="fas fa-feather-alt text-xs"></i></span>
+                            طباعة ذهبية بارزة يدوية التنفيذ
+                        </li>
+                        <li class="flex items-center gap-4 text-white/70 text-sm">
+                            <span class="w-9 h-9 rounded-full bg-gold/10 text-gold flex items-center justify-center flex-shrink-0"><i class="fas fa-ribbon text-xs"></i></span>
+                            شريط حريري وبطاقة إهداء مخصصة
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-span-1 lg:col-span-6 flex justify-center img-reveal-wrapper">
+                    <div class="relative group max-w-lg w-full">
+                        <div class="absolute -inset-4 bg-gold/10 blur-3xl rounded-full opacity-40 group-hover:opacity-60 transition-opacity duration-700"></div>
+                        <div class="aspect-square rounded-3xl overflow-hidden bg-accent shadow-2xl relative border border-white/10">
+                            <img
+                                    class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 lazy-load"
+                                    src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1'%3E%3C/svg%3E"
+                                    data-src="https://images.unsplash.com/photo-1513201099705-a9746e1e201f?w=900&q=80"
+                                    alt="صناديق التغليف الملكية الفاخرة"
+                                    loading="lazy">
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
+    <!-- ==================== WHY CHOOSE US ==================== -->
+    <section id="why-us-section" class="seasonal-bg py-32 relative overflow-hidden">
+        <div class="max-w-[1600px] mx-auto px-6 md:px-12 lg:px-20">
+            <div class="text-center mb-16 text-scroller-fade">
+                <span class="text-xs text-seasonal-rose font-bold tracking-[0.4em] uppercase block mb-3">لماذا ديسپاسيتو</span>
+                <h3 class="font-dmserif text-4xl md:text-5xl text-primary">تفاصيل تصنع الفارق</h3>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 text-scroller-fade">
+                <div class="feature-card seasonal-surface rounded-[2rem] p-8 text-center border border-primary/5">
+                    <div class="w-14 h-14 mx-auto rounded-full bg-seasonal-gold/10 text-seasonal-gold flex items-center justify-center mb-6">
+                        <i class="fas fa-leaf text-xl"></i>
+                    </div>
+                    <h4 class="font-dmserif text-lg text-primary mb-3">مكونات طبيعية 100%</h4>
+                    <p class="text-primary/50 text-sm leading-relaxed">نختار أجود المكسرات والمكونات الطازجة من مصادر موثوقة فقط.</p>
+                </div>
+                <div class="feature-card seasonal-surface rounded-[2rem] p-8 text-center border border-primary/5">
+                    <div class="w-14 h-14 mx-auto rounded-full bg-seasonal-gold/10 text-seasonal-gold flex items-center justify-center mb-6">
+                        <i class="fas fa-hand-sparkles text-xl"></i>
+                    </div>
+                    <h4 class="font-dmserif text-lg text-primary mb-3">صناعة يدوية دقيقة</h4>
+                    <p class="text-primary/50 text-sm leading-relaxed">كل قطعة تمر بيد حرفيينا المتخصصين قبل أن تصل إليك.</p>
+                </div>
+                <div class="feature-card seasonal-surface rounded-[2rem] p-8 text-center border border-primary/5">
+                    <div class="w-14 h-14 mx-auto rounded-full bg-seasonal-gold/10 text-seasonal-gold flex items-center justify-center mb-6">
+                        <i class="fas fa-gift text-xl"></i>
+                    </div>
+                    <h4 class="font-dmserif text-lg text-primary mb-3">تغليف يليق بالمناسبة</h4>
+                    <p class="text-primary/50 text-sm leading-relaxed">صناديق فاخرة مصممة خصيصاً لتكون هدية استثنائية.</p>
+                </div>
+                <div class="feature-card seasonal-surface rounded-[2rem] p-8 text-center border border-primary/5">
+                    <div class="w-14 h-14 mx-auto rounded-full bg-seasonal-gold/10 text-seasonal-gold flex items-center justify-center mb-6">
+                        <i class="fas fa-truck text-xl"></i>
+                    </div>
+                    <h4 class="font-dmserif text-lg text-primary mb-3">توصيل بعناية فائقة</h4>
+                    <p class="text-primary/50 text-sm leading-relaxed">تغليف حراري وتعامل حريص يحافظ على الطزاجة حتى بابك.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== GALLERY ==================== -->
     <section id="gallery-section" class="bg-cream py-32 border-t border-b border-primary/5">
-        <div class="max-w-[1600px] mx-auto px-6 md:px-12 lg:px-20 text-center mb-16">
-            <span class="text-xs text-gold font-bold tracking-[0.4em] uppercase block mb-3">فن الصنع والتحضير</span>
+        <div class="max-w-[1600px] mx-auto px-6 md:px-12 lg:px-20 text-center mb-16 text-scroller-fade">
+            <span class="text-xs text-seasonal-gold font-bold tracking-[0.4em] uppercase block mb-3">فن الصنع والتحضير</span>
             <h3 class="font-dmserif text-4xl md:text-5xl text-primary">شاهد سحر كواليسنا</h3>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-[1800px] mx-auto px-6">
-            <div class="relative overflow-hidden group rounded-3xl aspect-[3/4] bg-primary shadow-luxury-md">
+            <div class="relative overflow-hidden group rounded-3xl aspect-[3/4] bg-primary shadow-luxury-md img-reveal-wrapper">
                 <img class="w-full h-full object-cover opacity-80 group-hover:scale-110 transition-transform duration-700 lazy-load" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1'%3E%3C/svg%3E" data-src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?q=80&w=1926&auto=format&fit=crop" alt="Gallery Masterpiece 1">
                 <div class="absolute inset-0 bg-gradient-to-t from-primary via-transparent to-transparent opacity-60"></div>
                 <div class="absolute bottom-8 right-8 text-white text-right">
@@ -198,7 +441,7 @@
                     <h4 class="font-playfair text-xl font-bold">عجين طازج فاخر</h4>
                 </div>
             </div>
-            <div class="relative overflow-hidden group rounded-3xl aspect-[3/4] bg-primary shadow-luxury-md md:translate-y-8">
+            <div class="relative overflow-hidden group rounded-3xl aspect-[3/4] bg-primary shadow-luxury-md md:translate-y-8 img-reveal-wrapper">
                 <img class="w-full h-full object-cover opacity-80 group-hover:scale-110 transition-transform duration-700 lazy-load" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1'%3E%3C/svg%3E" data-src="https://images.unsplash.com/photo-1517433367423-c7e5b0f35086?q=80&w=2040&auto=format&fit=crop" alt="Gallery Masterpiece 2">
                 <div class="absolute inset-0 bg-gradient-to-t from-primary via-transparent to-transparent opacity-60"></div>
                 <div class="absolute bottom-8 right-8 text-white text-right">
@@ -206,7 +449,7 @@
                     <h4 class="font-playfair text-xl font-bold">تزيين يدوي بالذهب</h4>
                 </div>
             </div>
-            <div class="relative overflow-hidden group rounded-3xl aspect-[3/4] bg-primary shadow-luxury-md">
+            <div class="relative overflow-hidden group rounded-3xl aspect-[3/4] bg-primary shadow-luxury-md img-reveal-wrapper">
                 <img class="w-full h-full object-cover opacity-80 group-hover:scale-110 transition-transform duration-700 lazy-load" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1'%3E%3C/svg%3E" data-src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?q=80&w=1974&auto=format&fit=crop" alt="Gallery Masterpiece 3">
                 <div class="absolute inset-0 bg-gradient-to-t from-primary via-transparent to-transparent opacity-60"></div>
                 <div class="absolute bottom-8 right-8 text-white text-right">
@@ -217,6 +460,160 @@
         </div>
     </section>
 
+    <!-- ==================== CUSTOMER REVIEWS ==================== -->
+    <section id="reviews-section" class="seasonal-surface py-32 relative overflow-hidden">
+        <div class="max-w-[1600px] mx-auto px-6 md:px-12 lg:px-20">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-6 text-scroller-fade">
+                <div>
+                    <div class="flex items-center gap-3 mb-3">
+                        <div class="w-10 h-[1px] bg-rose"></div>
+                        <span class="text-seasonal-rose font-bold text-xs tracking-widest uppercase">آراء عملائنا</span>
+                    </div>
+                    <h3 class="font-dmserif text-4xl md:text-6xl text-primary">ثقة تستحق الاحتفاء</h3>
+                </div>
+                <div class="flex items-center gap-3">
+                    <span class="font-dmserif text-4xl text-seasonal-gold counter-element" data-target="49">0</span>
+                    <div class="text-right">
+                        <div class="text-seasonal-gold text-sm">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <span class="text-primary/40 text-[11px] uppercase tracking-wider">/5 تقييم العملاء</span>
+                    </div>
+                </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-scroller-fade">
+                <div class="glass-card rounded-[2rem] p-8 border border-primary/5">
+                    <div class="text-seasonal-gold text-sm mb-4"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p class="text-primary/70 text-sm leading-relaxed mb-6">"صندوق المولد كان أجمل من الصور! التغليف فخم جداً والحلويات طازجة ولذيذة، فعلاً يستاهل كل قرش."</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-11 h-11 rounded-full bg-primary/5 flex items-center justify-center text-primary/40 font-bold">م</div>
+                        <div>
+                            <span class="block text-primary font-bold text-sm">مريم عبد الله</span>
+                            <span class="text-primary/40 text-xs">القاهرة</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="glass-card rounded-[2rem] p-8 border border-primary/5">
+                    <div class="text-seasonal-gold text-sm mb-4"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p class="text-primary/70 text-sm leading-relaxed mb-6">"تعاملت معهم لأول مرة كهدية عيد ميلاد، والتوصيل كان في الميعاد والتغليف خيالي. هطلب تاني أكيد."</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-11 h-11 rounded-full bg-primary/5 flex items-center justify-center text-primary/40 font-bold">ي</div>
+                        <div>
+                            <span class="block text-primary font-bold text-sm">يوسف الفيومي</span>
+                            <span class="text-primary/40 text-xs">الفيوم</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="glass-card rounded-[2rem] p-8 border border-primary/5">
+                    <div class="text-seasonal-gold text-sm mb-4"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+                    <p class="text-primary/70 text-sm leading-relaxed mb-6">"مذاق أصيل بلمسة عصرية راقية. سلة المولد الذهبية كانت هدية مثالية لأهل زوجي، الكل سأل من وين."</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-11 h-11 rounded-full bg-primary/5 flex items-center justify-center text-primary/40 font-bold">ن</div>
+                        <div>
+                            <span class="block text-primary font-bold text-sm">نورهان سامي</span>
+                            <span class="text-primary/40 text-xs">بني سويف</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== INSTAGRAM FEED ==================== -->
+    <section id="instagram-section" class="bg-cream py-28 border-t border-b border-primary/5">
+        <div class="max-w-[1600px] mx-auto px-6 md:px-12 lg:px-20 text-center mb-14 text-scroller-fade">
+            <span class="text-xs text-seasonal-gold font-bold tracking-[0.4em] uppercase block mb-3">تابعونا</span>
+            <h3 class="font-dmserif text-4xl md:text-5xl text-primary mb-4">Instagram <span class="font-cairo text-2xl text-primary/40">@despacito.eg</span></h3>
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 md:gap-4 max-w-[1800px] mx-auto px-6">
+            <a href="#" class="relative overflow-hidden group aspect-square rounded-2xl bg-primary" aria-label="Instagram post 1">
+                <img class="w-full h-full object-cover opacity-90 group-hover:scale-110 transition-transform duration-700 lazy-load" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1'%3E%3C/svg%3E" data-src="https://images.unsplash.com/photo-1558636508-ea2e9b9e4c12?w=400&q=80" alt="Instagram post">
+                <div class="absolute inset-0 bg-primary/0 group-hover:bg-primary/50 flex items-center justify-center transition-all duration-500"><i class="fab fa-instagram text-white text-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></i></div>
+            </a>
+            <a href="#" class="relative overflow-hidden group aspect-square rounded-2xl bg-primary" aria-label="Instagram post 2">
+                <img class="w-full h-full object-cover opacity-90 group-hover:scale-110 transition-transform duration-700 lazy-load" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1'%3E%3C/svg%3E" data-src="https://images.unsplash.com/photo-1488477181946-6428a0291777?w=400&q=80" alt="Instagram post">
+                <div class="absolute inset-0 bg-primary/0 group-hover:bg-primary/50 flex items-center justify-center transition-all duration-500"><i class="fab fa-instagram text-white text-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></i></div>
+            </a>
+            <a href="#" class="relative overflow-hidden group aspect-square rounded-2xl bg-primary" aria-label="Instagram post 3">
+                <img class="w-full h-full object-cover opacity-90 group-hover:scale-110 transition-transform duration-700 lazy-load" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1'%3E%3C/svg%3E" data-src="https://images.unsplash.com/photo-1587668178277-295251f900ce?w=400&q=80" alt="Instagram post">
+                <div class="absolute inset-0 bg-primary/0 group-hover:bg-primary/50 flex items-center justify-center transition-all duration-500"><i class="fab fa-instagram text-white text-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></i></div>
+            </a>
+            <a href="#" class="relative overflow-hidden group aspect-square rounded-2xl bg-primary" aria-label="Instagram post 4">
+                <img class="w-full h-full object-cover opacity-90 group-hover:scale-110 transition-transform duration-700 lazy-load" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1'%3E%3C/svg%3E" data-src="https://images.unsplash.com/photo-1464349095431-e9a21215b546?w=400&q=80" alt="Instagram post">
+                <div class="absolute inset-0 bg-primary/0 group-hover:bg-primary/50 flex items-center justify-center transition-all duration-500"><i class="fab fa-instagram text-white text-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></i></div>
+            </a>
+            <a href="#" class="relative overflow-hidden group aspect-square rounded-2xl bg-primary hidden lg:block" aria-label="Instagram post 5">
+                <img class="w-full h-full object-cover opacity-90 group-hover:scale-110 transition-transform duration-700 lazy-load" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1'%3E%3C/svg%3E" data-src="https://images.unsplash.com/photo-1531292461545-53a3827c3e84?w=400&q=80" alt="Instagram post">
+                <div class="absolute inset-0 bg-primary/0 group-hover:bg-primary/50 flex items-center justify-center transition-all duration-500"><i class="fab fa-instagram text-white text-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></i></div>
+            </a>
+            <a href="#" class="relative overflow-hidden group aspect-square rounded-2xl bg-primary hidden lg:block" aria-label="Instagram post 6">
+                <img class="w-full h-full object-cover opacity-90 group-hover:scale-110 transition-transform duration-700 lazy-load" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1'%3E%3C/svg%3E" data-src="https://images.unsplash.com/photo-1517433670267-2a05c3b2df8f?w=400&q=80" alt="Instagram post">
+                <div class="absolute inset-0 bg-primary/0 group-hover:bg-primary/50 flex items-center justify-center transition-all duration-500"><i class="fab fa-instagram text-white text-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></i></div>
+            </a>
+        </div>
+    </section>
+
+    <!-- ==================== SPECIAL GIFTS ==================== -->
+    <section id="gifts-section" class="relative py-28 overflow-hidden bg-primary">
+        <div class="absolute inset-0 opacity-25 gs-parallax">
+            <img src="https://images.unsplash.com/photo-1481391319762-47dff72954d9?w=1600&q=80" alt="" class="w-full h-full object-cover">
+        </div>
+        <div class="absolute inset-0 bg-gradient-to-t from-primary via-primary/80 to-primary/60"></div>
+        <div class="relative z-10 max-w-[900px] mx-auto px-6 text-center text-scroller-fade">
+            <span class="text-gold text-xs font-bold tracking-[0.5em] uppercase block mb-5">هدايا استثنائية</span>
+            <h3 class="font-dmserif text-3xl md:text-5xl text-white leading-tight mb-8">صناديق هدايا مصممة لمن تستحق الأفضل</h3>
+            <p class="text-white/60 text-sm md:text-base max-w-xl mx-auto mb-10 leading-relaxed">اختر من تشكيلتنا الملكية الحصرية، أو اطلب صندوقاً مخصصاً بلمستك الخاصة لأي مناسبة تستحق الاحتفاء.</p>
+            <button onclick="filterCategory('luxury'); document.getElementById('products-section').scrollIntoView({behavior: 'smooth'})"
+                    class="shine-btn group relative px-10 py-5 bg-white rounded-full overflow-hidden shadow-luxury-lg magnetic-element">
+                <div class="absolute inset-0 w-0 bg-gold transition-all duration-500 ease-out-expo group-hover:w-full z-0"></div>
+                <span class="relative z-10 text-primary group-hover:text-white font-bold tracking-widest text-xs md:text-sm uppercase transition-colors duration-500">اكتشف صناديق الهدايا</span>
+            </button>
+        </div>
+    </section>
+
+    <!-- ==================== FAQ ==================== -->
+    <section id="faq-section" class="seasonal-bg py-32 relative overflow-hidden">
+        <svg class="botanical-corner absolute bottom-10 right-6 md:right-16 w-24 md:w-32 h-auto text-rose pointer-events-none rotate-180" viewBox="0 0 120 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M10 150 C 10 100, 40 90, 35 40 C 32 15, 55 5, 70 10" stroke="currentColor" stroke-width="1"/>
+            <ellipse cx="38" cy="60" rx="6" ry="14" transform="rotate(30 38 60)" stroke="currentColor" stroke-width="1"/>
+        </svg>
+        <div class="max-w-[900px] mx-auto px-6 relative z-10">
+            <div class="text-center mb-16 text-scroller-fade">
+                <span class="text-xs text-seasonal-rose font-bold tracking-[0.4em] uppercase block mb-3">دليلك الملكي</span>
+                <h3 class="font-dmserif text-4xl md:text-5xl text-primary">أسئلة شائعة</h3>
+            </div>
+
+            <div class="space-y-4 text-scroller-fade">
+                <div class="faq-item glass-card rounded-3xl p-6 md:p-8 border border-primary/5">
+                    <button onclick="window.toggleFAQ(this)" class="w-full flex items-center justify-between gap-6 text-right">
+                        <span class="font-bold text-primary text-base md:text-lg">كم يستغرق تجهيز الطلب الملكي؟</span>
+                        <i class="fas fa-chevron-down text-primary/40 transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p class="text-primary/60 text-sm md:text-base leading-relaxed pt-4">يتم تجهيز كل صندوق يدوياً خلال 24 إلى 48 ساعة لضمان أعلى مستويات الطزاجة والفخامة قبل التسليم أو الشحن.</p>
+                    </div>
+                </div>
+                <div class="faq-item glass-card rounded-3xl p-6 md:p-8 border border-primary/5">
+                    <button onclick="window.toggleFAQ(this)" class="w-full flex items-center justify-between gap-6 text-right">
+                        <span class="font-bold text-primary text-base md:text-lg">هل يمكن تخصيص الصندوق بكرت هدية؟</span>
+                        <i class="fas fa-chevron-down text-primary/40 transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p class="text-primary/60 text-sm md:text-base leading-relaxed pt-4">بالتأكيد، يمكنكم إضافة تفاصيل كرت الهدية أو أي تعليمات خاصة في خانة الملاحظات أثناء إتمام الطلب.</p>
+                    </div>
+                </div>
+                <div class="faq-item glass-card rounded-3xl p-6 md:p-8 border border-primary/5">
+                    <button onclick="window.toggleFAQ(this)" class="w-full flex items-center justify-between gap-6 text-right">
+                        <span class="font-bold text-primary text-base md:text-lg">ما هي مناطق التوصيل المتاحة؟</span>
+                        <i class="fas fa-chevron-down text-primary/40 transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p class="text-primary/60 text-sm md:text-base leading-relaxed pt-4">نوفر خدمة التوصيل حالياً لمحافظات الفيوم وبني سويف والمنيا، بالإضافة إلى إمكانية الاستلام من الفرع مباشرة.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
 </main>
 
@@ -242,8 +639,6 @@
                         loading="lazy"
                         referrerpolicy="no-referrer-when-cross-origin"
                         title="موقع ديسپاسيتو على الخريطة الحية"></iframe>
-
-
             </div>
         </div>
     </div>
@@ -254,7 +649,7 @@
     </div>
 </footer>
 
-<!-- ==================== CART MODAL (UPDATED with Delivery/Pickup) ==================== -->
+<!-- ==================== CART MODAL ==================== -->
 <div id="cartModal" onclick="if(event.target === this) window.closeCart()"
      class="hidden fixed inset-0 bg-primary/60 backdrop-blur-md z-[120] items-stretch justify-end p-0 transition-opacity duration-500">
     <aside onclick="event.stopImmediatePropagation()"
@@ -262,11 +657,11 @@
 
         <div class="flex items-center justify-between border-b border-primary/5 bg-cream px-6 py-6 sm:px-8">
             <div>
-                <p class="text-xs font-bold uppercase tracking-widest text-gold mb-1">سلة المقتنيات</p>
+                <p class="text-xs font-bold uppercase tracking-widest text-seasonal-gold mb-1">سلة المقتنيات</p>
                 <h2 class="text-2xl font-bold text-primary font-dmserif">طلباتك الملكية</h2>
             </div>
             <button onclick="window.closeCart()" aria-label="Close Shopping Cart Drawer"
-                    class="flex h-12 w-12 items-center justify-center rounded-full bg-primary/5 text-primary hover:bg-rose/10 hover:text-rose transition-colors">
+                    class="flex h-12 w-12 items-center justify-center rounded-full bg-primary/5 text-primary hover:bg-rose/10 hover:text-seasonal-rose transition-colors">
                 <i class="fas fa-times text-lg"></i>
             </button>
         </div>
@@ -294,7 +689,6 @@
                               placeholder="مثال: تفاصيل كتابة كرت الهدية، تفضيل وقت التوصيل..."></textarea>
                 </div>
 
-                <!-- ===== NEW: Delivery / Pickup Selection ===== -->
                 <div class="rounded-3xl bg-cream p-6 border border-gold/10">
                     <h3 class="mb-4 text-sm font-bold text-primary uppercase tracking-wider">طريقة الاستلام</h3>
                     <div class="flex gap-4 mb-4">
@@ -308,7 +702,6 @@
                         </label>
                     </div>
 
-                    <!-- Delivery Fields (hidden by default) -->
                     <div id="deliveryFields" class="space-y-4 hidden transition-all duration-300 ease-out-expo">
                         <div>
                             <label class="mb-2 block text-right text-xs font-bold text-primary/60 uppercase tracking-wider">
@@ -348,7 +741,7 @@
         <div class="border-t border-primary/5 bg-white px-6 py-6 sm:px-8">
             <p id="cartError" class="mb-3 min-h-5 text-xs font-bold text-red-600 text-right"></p>
             <button onclick="window.sendOrder()"
-                    class="flex w-full items-center justify-center gap-3 rounded-full bg-primary hover:bg-gold px-6 py-5 text-sm font-bold text-white shadow-luxury-lg transition-colors duration-300">
+                    class="shine-btn flex w-full items-center justify-center gap-3 rounded-full bg-primary hover:bg-gold px-6 py-5 text-sm font-bold text-white shadow-luxury-lg transition-colors duration-300">
                 <i class="fab fa-whatsapp text-xl"></i>
                 إرسال وتأكيد الطلب الفاخر عبر واتساب
             </button>
@@ -356,7 +749,7 @@
     </aside>
 </div>
 
-<!-- ==================== PHONE MODAL (unchanged) ==================== -->
+<!-- ==================== PHONE MODAL ==================== -->
 <div id="phoneModal"
      class="hidden fixed inset-0 z-[150] items-center justify-center bg-primary/70 backdrop-blur-md p-4 transition-opacity duration-300">
     <div class="modal-pop w-full max-w-md rounded-[2.5rem] bg-white p-8 shadow-2xl relative border border-primary/5">
@@ -389,7 +782,7 @@
         </div>
         <div class="mt-8 flex gap-3">
             <button onclick="window.confirmPhoneAndSend()"
-                    class="flex-1 rounded-full bg-primary hover:bg-gold px-6 py-4 text-xs font-bold text-white shadow-luxury-md flex items-center justify-center gap-2 transition-colors duration-300">
+                    class="shine-btn flex-1 rounded-full bg-primary hover:bg-gold px-6 py-4 text-xs font-bold text-white shadow-luxury-md flex items-center justify-center gap-2 transition-colors duration-300">
                 <i class="fab fa-whatsapp text-base"></i> تأكيد وإرسال
             </button>
         </div>
